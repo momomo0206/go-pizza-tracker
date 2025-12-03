@@ -8,6 +8,12 @@ import (
 	"github.com/momomo0206/go-pizza-tracker/internal/models"
 )
 
+type CustomerData struct {
+	Title    string
+	Order    models.Order
+	Statuses []string
+}
+
 type OrderFormData struct {
 	PizzaTypes []string
 	PizzaSizes []string
@@ -77,7 +83,9 @@ func (h *Handler) serveCustomer(c *gin.Context) {
 		return
 	}
 
-	c.HTML(http.StatusOK, "customer.tmpl", gin.H{
-		"Order": order,
+	c.HTML(http.StatusOK, "customer.tmpl", CustomerData{
+		Title:    "Pizza Order Status " + orderID,
+		Order:    *order,
+		Statuses: models.OrderStatuses,
 	})
 }
