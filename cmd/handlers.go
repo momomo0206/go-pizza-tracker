@@ -2,12 +2,12 @@ package main
 
 import "github.com/momomo0206/go-pizza-tracker/internal/models"
 
-type Hanndler struct {
+type Handler struct {
 	orders *models.OrderModel
 }
 
-func NewHanndler(dbModel *models.DBModel) *Hanndler {
-	return &Hanndler{
+func NewHandler(dbModel *models.DBModel) *Handler {
+	return &Handler{
 		orders: &dbModel.Order,
 	}
 }
